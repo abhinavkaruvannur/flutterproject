@@ -14,8 +14,28 @@ class Myapp extends StatelessWidget {
       appBar: AppBar(
         title: Text("myapp"),
       ),
-      body: Container(
-        child: Text("my flutter app"),
+      body: Center(
+        child: Column(
+          children: [
+            Text(
+              "my flutter app",
+              style: TextStyle(
+                  color: Colors.cyan,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 25),
+            ),
+            Icon(
+              Icons.account_box,
+              size: 50,
+              color: Colors.blue,
+            ),
+            Image(
+                image: NetworkImage(
+                    "https://www.shutterstock.com/image-photo/mountains-under-mist-morning-amazing-260nw-1725825019.jpg")),
+            Image(image: AssetImage("assets/images/dog.png"),height: 100,width: 50,),
+          ],
+        ),
       ),
     );
   }
