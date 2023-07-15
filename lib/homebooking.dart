@@ -5,6 +5,24 @@ void main() {
     home: homepage(),debugShowCheckedModeBanner: false,
   ));
 }
+final List rooms=[
+  {
+    "image":"https://static.theprint.in/wp-content/uploads/2022/10/Hotel.jpg",
+    "title":"Awesom room near kakkanad"
+  },
+  {
+    "image":"https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&w=1000&q=80 ",
+    "title":"Peaceful room"
+  },
+  {
+    "image":"https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?cs=srgb&dl=pexels-pixabay-262048.jpg&fm=jpg",
+    "title":"Beautiful room"
+  },
+  {
+    "image":"https://www.xotels.com/wp-content/uploads/2020/03/hotel-room-type-xotels-hotel-management-company.webp",
+    "title":"vintage room"
+  }
+];
 
 class homepage extends StatelessWidget {
   @override
@@ -74,7 +92,87 @@ class homepage extends StatelessWidget {
         SliverToBoxAdapter(
           child: _buildCategories(),
         ),
-      ]),
+        SliverList(delegate: SliverChildBuilderDelegate(
+                (BuildContext context,int index){
+          return _buildRooms(context,index);
+        },
+           childCount:100,
+        )
+        )
+      ],),
+    );
+  }
+  Widget _buildRooms(BuildContext context,int index){
+    var room = rooms[index % rooms.length];
+    return Container(
+      margin: const EdgeInsets.all(20),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(5),
+        child: Container(
+          child: Material(
+            elevation: 5,
+            borderRadius: BorderRadius.circular(5),
+            color: Colors.greenAccent,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children:<Widget> [
+                Stack(
+                  children:<Widget> [
+                    Image.network(room['image']),
+                   Positioned(
+                    right:10,
+                     top: 10,
+                     child: Icon(Icons.star,color: Colors.grey.shade800,size: 20,),
+                  ),
+                    const Positioned(
+                      right:8,
+                      top: 8,
+                      child: Icon(Icons.star_border,color: Colors.white,size: 24,),
+                    ),
+                    Positioned(
+                      bottom:20,
+                      right: 10,
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        color: Colors.white,
+                        child: const Text("\$40"),
+                      )
+                    )
+                  ],
+                ),
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(room['title'],style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                      ),),
+                      const SizedBox(height: 5,),
+                      const Text("kakkanad,kochi"),
+                      const SizedBox(height: 10,),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children:const<Widget>[
+                          Icon(Icons.star, color: Colors.green,),
+                          Icon(Icons.star, color: Colors.green,),
+                          Icon(Icons.star, color: Colors.green,),
+                          Icon(Icons.star, color: Colors.green,),
+                          Icon(Icons.star, color: Colors.green,),
+                          SizedBox(width: 5,),
+                          Text("(220 reviews)", style:TextStyle(color: Colors.grey) ,)
+                        ]
+                        
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 
