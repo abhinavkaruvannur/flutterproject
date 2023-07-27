@@ -271,12 +271,29 @@ class _NewsHoursState extends State<NewsHours> {
                                   ],
                                 ),
                               ),
-                            ),
+                            ),Padding(padding: const EdgeInsets.only(top: 10),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.deepOrange[600],
+                                minimumSize: Size(100, 60),
+                                maximumSize: Size(450, 90)
+                              ),onPressed: (){},
+                              child:Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.save),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text('Save Data'),
+                                ],
+                              ) ,
+                            ),)
                           ],
                         ),
                       ),
                       // Text("jidhfjidhf"),
-                      Text("sdjhfjhsdfjh"),
+                      Text("Data Set"),
                     ]),
                   )
                 ],
